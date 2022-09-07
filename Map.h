@@ -1,4 +1,7 @@
 #pragma once
-class Map {
+class Map 
+{
+public:
+	int FirstMap[18][37];
 };
 
