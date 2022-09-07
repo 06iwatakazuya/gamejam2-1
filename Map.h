@@ -2,6 +2,8 @@
 class Map 
 {
 public:
-	int FirstMap[18][37];
+
+	//ƒ}ƒbƒv’Ç‰Á
+	void CreateMap();
 };
 
