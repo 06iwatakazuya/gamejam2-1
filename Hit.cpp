@@ -53,7 +53,11 @@ int leftHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerSp
 	leftCenterY = playerPosY / blockSize;
 	if (map[leftTopY][leftTopX] == 0 && map[leftBottomX][leftBottomY] == 0) 
 	{
-		playerPosX -= playerSpeed;
+		return 1;
+	}
+	else 
+	{
+		return 0;
 	}
 }
 
@@ -71,7 +75,11 @@ int rightHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerS
 	rightCenterY = (playerPosX - playerRadius) / blockSize;
 	if (map[rightTopY][rightTopX] == 0 && map[rightBottomY][rightBottomX] == 0) 
 	{
-		playerPosX += playerSpeed;
+		return 1;
+	}
+	else 
+	{
+		return 0;
 	}
 }
 
