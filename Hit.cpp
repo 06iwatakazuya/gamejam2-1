@@ -83,10 +83,43 @@ int rightHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerS
 	}
 }
 
-//int underHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerSpeed,
-//				   int* rightBottomX, int* rightBottomY, int* leftBottomX, int* leftBottomY,
-//				   int underCenterX, int underCenterY,
-//				   int blockSize, int map) 
-//{
-//	*rightBottomX = 
-//}
+int bottomHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerSpeed,
+				   int* rightBottomX, int* rightBottomY, int* leftBottomX, int* leftBottomY,
+				   int centerBottomX, int centerBottomY,
+				   int blockSize, int map) 
+{
+	*rightBottomX = (playerPosX + playerRadius - 1) / blockSize;
+	*rightBottomY = (playerPosY + playerRadius - 1) / blockSize;
+	*leftBottomX = (playerPosX - playerRadius) / blockSize;
+	*leftBottomY = (playerPosY + playerRadius) / blockSize;
+	centerBottomX = playerPosX / blockSize;
+	centerBottomY = (playerPosY + playerRadius) / blockSize;
+	if (map[rightBottomY][rightBottomX] == 0 && map[leftBottomY][leftBottomX] == 0) 
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+
+int topHitMaptip(int playerPosX, int playerPosY, int playerRadius, int playerSpeed,
+					int* rightTopX, int* rightTopY, int* leftTopX, int* leftTopY,
+					int centerTopX, int centerTopY,
+					int blockSize, int map) {
+	*rightTopX = (playerPosX + playerRadius - 1) / blockSize;
+	*rightTopY = (playerPosY + playerRadius) / blockSize;
+	*leftTopX = (playerPosX - playerRadius) / blockSize;
+	*leftTopY = (playerPosY + playerRadius) / blockSize;
+	centerTopX = playerPosX / blockSize;
+	centerTopY = (playerPosY + playerRadius) / blockSize;
+	if (map[rightTopY][rightTopX] == 0 && map[leftTopY][leftTopX] == 0) 
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
