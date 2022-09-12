@@ -1,5 +1,4 @@
 #include "DxLib.h"
-#include "Hit.h"
 #include "Player.h"
 
 // ウィンドウのタイトルに表示する文字列
@@ -62,7 +61,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		player->Update(keys, );
+		player->Update(keys, oldkeys);
 
 		// 描画処理
 		player->Draw();

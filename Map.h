@@ -5,8 +5,8 @@ class Map
 {
 public://メンバ関数
 
-	//マップシーン
-	enum class MapScene
+	//マップブロックシーン
+	enum class MapBlockScene
 	{
 		NONE,		//0
 		BLOCK,		//1

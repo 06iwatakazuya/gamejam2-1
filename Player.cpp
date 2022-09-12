@@ -21,6 +21,7 @@ void Player::Initialize() {
 	fireRadius = 5;
 	fireSpeed = 5;
 	fireGravity = -3;
+	fireTimer = 0;
 	/*for (std::unique_ptr<PlayerAttack>& fire : fire) {
 		fire->Initialize(playerPosX, playerPosY);
 	}*/
