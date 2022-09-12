@@ -1,5 +1,5 @@
 #pragma once
-#include "PlayerAttack.h"
+//#include "PlayerAttack.h"
 #include <list>
 #include <memory>
 
@@ -27,7 +27,7 @@ public:
 	void Attack();
 
 	// 弾リスト取得
-	const std::list<std::unique_ptr<PlayerAttack>>& GetBullets() { return fire; }
+	//const std::list<std::unique_ptr<PlayerAttack>>& GetBullets() { return fire; }
 
 private:
 	/// <summary>
@@ -62,6 +62,6 @@ private:
 	//// 1ループ(フレーム)前のキーボード情報
 	//char oldkeys[256] = { 0 };
 	// 弾
-	std::list<std::unique_ptr<PlayerAttack>> fire;
+	//std::list<std::unique_ptr<PlayerAttack>> fire;
 };
 
