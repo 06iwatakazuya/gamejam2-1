@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "Player.h"
+#include "Map.h"
 
 // ウィンドウのタイトルに表示する文字列
 const char TITLE[] = "LE2C_04_イワタ_カズヤ: タイトル";
@@ -38,11 +39,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// 画像などのリソースデータの変数宣言と読み込み
-
+	int scene = 0;
 
 	// ゲームループで使う変数の宣言
+	
+	//プレイヤーの初期化
 	Player* player = new Player;
 	player->Initialize();
+
+	//マップの初期化
+	Map* map = new Map;
+	map->Initialize(WIN_HEIGHT, WIN_WIDTH);
 
 	// 最新のキーボード情報用
 	char keys[256] = {0};
@@ -53,6 +60,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// ゲームループ
 	while (true) {
 		// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
+		for (int i = 0; i < 255; i++)
+		{
+			keys[i] = oldkeys[i];
+		}
 		// 最新のキーボード情報を取得
 		GetHitKeyStateAll(keys);
 
@@ -61,10 +72,47 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		player->Update(keys, oldkeys);
+		if (scene == 0)
+		{
+			if (keys[KEY_INPUT_SPACE] == 1)
+			{
+				scene = 1;
+			}
+		}
+		else if (scene == 1)
+		{
+			//プレイヤーの更新処理
+			player->Update(keys, oldkeys);
+
+			//マップの更新処理
+			map->Update();
+		}
+		else if (scene == 2)
+		{
+			if (keys[KEY_INPUT_SPACE] == 1)
+			{
+				scene = 0;
+			}
+		}
+		
 
 		// 描画処理
-		player->Draw();
+		if (scene == 0)
+		{
+
+		}
+		else if (scene == 1)
+		{
+			//プレイヤーの描画処理
+			player->Draw();
+
+			//マップの描画処理
+			map->Draw();
+		}
+		else if (scene == 2)
+		{
+
+		}
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面

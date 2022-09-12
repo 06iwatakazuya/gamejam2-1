@@ -6,7 +6,7 @@ class Map
 public://メンバ関数
 
 	//マップブロックシーン
-	enum class MapBlockScene
+	enum MapBlockScene
 	{
 		NONE,		//0
 		BLOCK,		//1
@@ -17,7 +17,7 @@ public://メンバ関数
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize();
+	void Initialize(int mapHeight, int mapWidth);
 
 	/// <summary>
 	/// 更新
@@ -35,9 +35,19 @@ public://メンバ関数
 public:
 	//マップシーン
 	int mapScene = 0;
+ 
 
 private://メンバ変数
 
-	
+	//ウィンドウ縦幅
+	int mapHeight_ = 0;
+
+	//ウィンドウ横幅
+	int mapWidth_ = 0;
+
+	//ブロックサイズ
+	int blockSize = 32;
+
+	int tutorialCopyMap[18][52] = {0};
 };
 

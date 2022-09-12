@@ -3,10 +3,13 @@
 /// <summary>
 /// 初期化
 /// </summary>
-void Map::Initialize()
+void Map::Initialize(int mapHeight, int mapWidth)
 {
+	mapHeight_ = mapHeight;
+	mapWidth_ = mapWidth;
+
 	//マップシーンの初期化
-	mapScene = 0;
+	mapScene = 1;
 
 	//マップの初期化
 	CreateMap();
@@ -25,7 +28,19 @@ void Map::Update()
 /// </summary>
 void Map::Draw()
 {
-
+	//行の繰り返し
+	for (int y = 0; y < mapHeight_; y++)
+	{
+		//列の繰り返し
+		for (int x = 0; x < mapWidth_; x++)
+		{
+			if (tutorialCopyMap[y][x] == BLOCK)
+			{
+				DrawBox(x - 16 * blockSize, y - 16 * blockSize, x + 16 * blockSize, y + 16 * blockSize, GetColor(255, 255, 255), true);
+					
+			}
+		}
+	}
 }
 
 //マップ追加
@@ -59,6 +74,14 @@ void Map::CreateMap()
 			{0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0},
 			{1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1}
 		};
+
+		//マップの列(横)の数
+		int tutorialMapCountX = sizeof(tutorialMap[0]) / sizeof(tutorialMap[0][0]);
+
+		//マップの行(縦)の数
+		int tutorialMapCountY = sizeof(tutorialMap) / sizeof(tutorialMap[0]);
+
+		tutorialCopyMap[18][52] = tutorialMap[18][52];
 	}
 	else if (mapScene == 2)
 	{
@@ -84,6 +107,12 @@ void Map::CreateMap()
 			{0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,3,0,0,0,0},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
+
+		//マップの列(横)の数
+		int firstMapCountX = sizeof(firstMap[0]) / sizeof(firstMap[0][0]);
+
+		//マップの行(縦)の数
+		int firstMapCountY = sizeof(firstMap) / sizeof(firstMap[0]);
 	}
 	else if (mapScene == 3)
 	{
@@ -117,6 +146,12 @@ void Map::CreateMap()
 			{0,0,0,0,0,0,0,0,0,1,0,7,7,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,3,0},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,1,0,0,2,2,2,1,1,1,1,1,0,0,1,1,1,1,2,2,2,1,2}
 		};
+
+		//マップの列(横)の数
+		int fourthMapCountX = sizeof(fourthMap[0]) / sizeof(fourthMap[0][0]);
+
+		//マップの行(縦)の数
+		int fourthMapCountY = sizeof(fourthMap) / sizeof(fourthMap[0]);
 	}
 	else if (mapScene == 6)
 	{

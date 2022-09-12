@@ -44,17 +44,17 @@ private:
 	/// <summary>
 	/// ジャンプ
 	/// </summary>
-	int jump;
-	int jumpFlag;
+	int jump = 0;
+	int jumpFlag = 0;
 
 	//const int
-	int fireFlag;
-	int firePosX;
-	int firePosY;
-	int fireRadius;
-	int fireSpeed;
-	int fireTimer;
-	int fireGravity;
+	int fireFlag = 0;
+	int firePosX = 0;
+	int firePosY = 0;
+	int fireRadius = 0;
+	int fireSpeed = 0;
+	int fireTimer = 0;
+	int fireGravity = 0;
 
 	//// 最新のキーボード情報用
 	//char keys[256] = { 0 };
