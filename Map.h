@@ -32,9 +32,12 @@ public://メンバ関数
 	//マップ追加
 	void CreateMap();
 
-private://メンバ変数
-
+public:
 	//マップシーン
 	int mapScene = 0;
+
+private://メンバ変数
+
+	
 };
 
